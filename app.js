@@ -1,6 +1,6 @@
 /* ==========================================================================
    ARKMart Application Logic & Interactive Features
-   Visual Categories, Infinite Ticker, Product Details Modal (Target Match)
+   Visual Categories, Running Ticker & 25 Indian Customer Reviews Engine
    ========================================================================== */
 
 // --------------------------------------------------------------------------
@@ -236,6 +236,37 @@ const productsData = [
     }
 ];
 
+// --------------------------------------------------------------------------
+// 2. 25 Professional Indian Customer Reviews Dataset (4.0 & 5.0 Stars)
+// --------------------------------------------------------------------------
+const indianCustomerReviews = [
+    { name: "Ramesh Kumar", location: "Noida", rating: 5, date: "2 days ago", comment: "Superb quality! Atta is completely fresh and rotis stay soft till evening. Got delivered in just 8 mins.", helpful: 42 },
+    { name: "Priya Sharma", location: "Delhi NCR", rating: 5, date: "3 days ago", comment: "Packaging was neat and fresh batch delivered. ARKMart 10-minute delivery speed is unbeatable!", helpful: 38 },
+    { name: "Amit Patel", location: "Gurugram", rating: 5, date: "4 days ago", comment: "Original product with genuine MRP discount. Highly recommended for daily grocery shopping.", helpful: 29 },
+    { name: "Sunita Verma", location: "Ghaziabad", rating: 4, date: "5 days ago", comment: "Very good product quality. Delivery agent was polite and brought it right to my doorstep.", helpful: 19 },
+    { name: "Vikram Singh", location: "Noida Sec 62", rating: 5, date: "1 week ago", comment: "Best price in the market. I compared with local store and ARKMart is 20% cheaper with free delivery.", helpful: 56 },
+    { name: "Ananya Gupta", location: "Faridabad", rating: 5, date: "1 week ago", comment: "Super fresh and pure quality. Rotis turn out soft and white. Will order again definitely!", helpful: 31 },
+    { name: "Rajesh Iyer", location: "Greater Noida", rating: 4, date: "1 week ago", comment: "Prompt 10-minute delivery. Packing was clean, sturdy and spill-proof.", helpful: 14 },
+    { name: "Neha Agarwal", location: "Delhi", rating: 5, date: "2 weeks ago", comment: "Awesome shopping experience! Applied ARK50 promo code and got extra ₹50 discount.", helpful: 47 },
+    { name: "Suresh Reddy", location: "Noida Sec 18", rating: 5, date: "2 weeks ago", comment: "100% authentic product. Delivered superfast within 9 minutes of placing order.", helpful: 23 },
+    { name: "Pooja Mehta", location: "Gurugram Sec 56", rating: 5, date: "2 weeks ago", comment: "Great product quality. Very convenient for busy working professionals like me.", helpful: 33 },
+    { name: "Deepak Joshi", location: "Noida Sec 63", rating: 4, date: "3 weeks ago", comment: "Great value for money. Fresh stock delivered with long expiry date.", helpful: 18 },
+    { name: "Simran Kaur", location: "Delhi Cantt", rating: 5, date: "3 weeks ago", comment: "Fully satisfied with ARKMart service. 10 mins superfast delivery promise is real!", helpful: 50 },
+    { name: "Alok Mishra", location: "Ghaziabad Sec 4", rating: 5, date: "3 weeks ago", comment: "Top notch quality. My whole family is happy with the fresh taste.", helpful: 26 },
+    { name: "Swati Deshmukh", location: "Indirapuram", rating: 5, date: "1 month ago", comment: "Clean hygienic packaging and fresh product batch. Very happy with my purchase.", helpful: 41 },
+    { name: "Rohan Malhotra", location: "Noida Sec 50", rating: 4, date: "1 month ago", comment: "Fast delivery and easy payment via PhonePe UPI QR code. Smooth app experience.", helpful: 15 },
+    { name: "Kavita Saxena", location: "South Delhi", rating: 5, date: "1 month ago", comment: "Pure and healthy. Roti stays soft for long hours even in tiffin box.", helpful: 37 },
+    { name: "Manoj Tiwary", location: "Vaishali", rating: 5, date: "1 month ago", comment: "Superfast express delivery. Truly impressed with ARKMart customer service team!", helpful: 28 },
+    { name: "Divya Nambiar", location: "Dwarka", rating: 5, date: "1 month ago", comment: "Genuine MRP discount and original brand packaging. 5 stars from my side!", helpful: 22 },
+    { name: "Harpreet Singh", location: "West Delhi", rating: 4, date: "1 month ago", comment: "Good quality staple. Arrived fast and fresh in perfect condition.", helpful: 12 },
+    { name: "Shalini Kapoor", location: "Noida Sec 137", rating: 5, date: "2 months ago", comment: "Must buy! Very fresh batch and authentic quality.", helpful: 34 },
+    { name: "Tarun Banerjee", location: "Noida Sec 15", rating: 5, date: "2 months ago", comment: "Seamless ordering process & instant GPay checkout. Highly reliable service.", helpful: 19 },
+    { name: "Meenakshi Sundaram", location: "Mayur Vihar", rating: 5, date: "2 months ago", comment: "Excellent quality product delivered in just 7 mins. Will be a regular buyer now.", helpful: 45 },
+    { name: "Nitin Saxena", location: "Kaushambi", rating: 4, date: "2 months ago", comment: "Value for money product. Great discount and fast delivery.", helpful: 16 },
+    { name: "Rashmi Trivedi", location: "Noida Sec 76", rating: 5, date: "2 months ago", comment: "Fresh product, great discount offer. 5 stars all the way!", helpful: 30 },
+    { name: "Saurabh Roy", location: "Laxmi Nagar", rating: 5, date: "2 months ago", comment: "Fantastic service by ARKMart. Highly satisfied with product quality and delivery!", helpful: 52 }
+];
+
 // Categories Config
 const categories = [
     { name: "All", icon: "fa-solid fa-layer-group" },
@@ -422,7 +453,7 @@ function renderProducts() {
 }
 
 // --------------------------------------------------------------------------
-// 2. Open & Populate Professional Product Details Page / Modal
+// 3. Open & Populate Product Details & Render 25 Indian Reviews
 // --------------------------------------------------------------------------
 function openProductDetails(productId) {
     const product = productsData.find(p => p.id === productId);
@@ -439,12 +470,15 @@ function openProductDetails(productId) {
     document.getElementById("pDetailsMrp").innerText = `₹${product.mrp}`;
     document.getElementById("pDetailsDiscount").innerText = product.discount || "SALE";
 
-    // Populate Thumbnails Gallery Track
+    // Populate Gallery Track
     const track = document.getElementById("pThumbnailsTrack");
     const thumbs = product.thumbnails || [product.image, product.image];
     track.innerHTML = thumbs.map((imgUrl, idx) => `
         <img src="${imgUrl}" class="thumb-img ${idx === 0 ? 'active' : ''}" onclick="switchDetailImage('${imgUrl}', this)">
     `).join("");
+
+    // Render 25 Professional Indian Customer Reviews
+    renderCustomerReviews();
 
     // Setup Footer Button Handlers
     const addCartBtn = document.getElementById("pDetailsAddCartBtn");
@@ -463,6 +497,62 @@ function openProductDetails(productId) {
 
     // Open Modal
     document.getElementById("productDetailsOverlay").classList.add("active");
+}
+
+// Render 25 Indian Customer Reviews
+function renderCustomerReviews() {
+    const container = document.getElementById("reviewsListContainer");
+    if (!container) return;
+
+    const colors = ["#0088cc", "#059669", "#7C3AED", "#D97706", "#DC2626", "#2563EB", "#0D9488"];
+
+    container.innerHTML = indianCustomerReviews.map((rev, idx) => {
+        const initial = rev.name.charAt(0);
+        const bgCol = colors[idx % colors.length];
+        
+        let starsHtml = "";
+        for (let i = 1; i <= 5; i++) {
+            if (i <= rev.rating) {
+                starsHtml += `<i class="fa-solid fa-star"></i>`;
+            } else {
+                starsHtml += `<i class="fa-regular fa-star"></i>`;
+            }
+        }
+
+        return `
+            <div class="review-card">
+                <div class="review-top-row">
+                    <div class="reviewer-profile">
+                        <div class="reviewer-avatar" style="background-color:${bgCol};">${initial}</div>
+                        <div class="reviewer-details">
+                            <span class="reviewer-name">${rev.name}</span>
+                            <span class="verified-buyer-badge"><i class="fa-solid fa-circle-check"></i> Verified Buyer (${rev.location})</span>
+                        </div>
+                    </div>
+
+                    <div class="review-rating-stars">
+                        <span>${rev.rating}.0</span> ${starsHtml}
+                    </div>
+                </div>
+
+                <p class="review-comment">"${rev.comment}"</p>
+
+                <div class="review-bottom-meta">
+                    <span>Reviewed ${rev.date}</span>
+                    <button class="helpful-btn" onclick="toggleHelpful(this, ${rev.helpful})">
+                        <i class="fa-regular fa-thumbs-up"></i> Helpful (${rev.helpful})
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+
+function toggleHelpful(btn, count) {
+    if (btn.classList.contains("voted")) return;
+    btn.classList.add("voted");
+    btn.style.color = "#0088cc";
+    btn.innerHTML = `<i class="fa-solid fa-thumbs-up"></i> Helpful (${count + 1})`;
 }
 
 function closeProductDetails() {
