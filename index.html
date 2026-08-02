@@ -95,53 +95,30 @@
 
     <!-- App Container -->
     <main class="app-main">
-        <!-- Hero Banner Carousel -->
+        <!-- Hero Banner Carousel with User's Target Banners -->
         <section class="hero-carousel-section">
             <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack">
-                    <!-- Banner 1 -->
-                    <div class="carousel-slide active">
-                        <div class="banner-card banner-primary">
-                            <div class="banner-content">
-                                <span class="banner-badge">MEGA SAVINGS</span>
-                                <h2>ARKMart Daily Staples Festival</h2>
-                                <p>Up to <strong>50% OFF</strong> on Fortune Oil, Aashirvaad Atta & Basmati Rice</p>
-                                <button class="banner-cta" onclick="filterByCategory('Staples')">Shop Now <i class="fa-solid fa-arrow-right"></i></button>
-                            </div>
-                            <div class="banner-visual">
-                                <div class="floating-deal-tag">FLAT ₹100 OFF</div>
-                                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80" alt="Groceries Festival">
+                    <!-- Banner 1: Low Price Guarantee -->
+                    <div class="carousel-slide active" onclick="filterByCategory('Staples')">
+                        <div class="banner-img-slide">
+                            <img src="images/banner1.png" alt="Low Price Guarantee on Your Favourite Items">
+                        </div>
+                    </div>
+                    <!-- Banner 2: Mother's Day Delights with ARKMart Branding -->
+                    <div class="carousel-slide" onclick="filterByCategory('Personal Care')">
+                        <div class="banner-img-slide banner-overlay-container">
+                            <img src="images/banner2.png" alt="Mother's Day Delights">
+                            <!-- Overlay patch over JioMart text to show ARKMart -->
+                            <div class="brand-patch-overlay">
+                                <span class="patch-text">Find them all on <strong class="patch-brand">ARK<span class="patch-sub">Mart</span></strong></span>
                             </div>
                         </div>
                     </div>
-                    <!-- Banner 2 -->
-                    <div class="carousel-slide">
-                        <div class="banner-card banner-secondary">
-                            <div class="banner-content">
-                                <span class="banner-badge fresh">FARM FRESH</span>
-                                <h2>100% Organic Fruits & Veggies</h2>
-                                <p>Directly from farm to your kitchen doorstep</p>
-                                <button class="banner-cta" onclick="filterByCategory('Fresh Produce')">Explore Fresh <i class="fa-solid fa-arrow-right"></i></button>
-                            </div>
-                            <div class="banner-visual">
-                                <div class="floating-deal-tag">FRESH TODAY</div>
-                                <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80" alt="Fresh Produce">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Banner 3 -->
-                    <div class="carousel-slide">
-                        <div class="banner-card banner-tertiary">
-                            <div class="banner-content">
-                                <span class="banner-badge warning">FLASH SALE</span>
-                                <h2>Snacks, Drinks & Munchies</h2>
-                                <p>Buy 2 Get 1 Free on selected Beverages & Biscuits</p>
-                                <button class="banner-cta" onclick="filterByCategory('Snacks & Drinks')">Order Snacks <i class="fa-solid fa-arrow-right"></i></button>
-                            </div>
-                            <div class="banner-visual">
-                                <div class="floating-deal-tag">BUY 2 GET 1</div>
-                                <img src="https://images.unsplash.com/photo-1527960471264-932f39eb5846?auto=format&fit=crop&w=600&q=80" alt="Snacks & Drinks">
-                            </div>
+                    <!-- Banner 3: Wow & Now Deals -->
+                    <div class="carousel-slide" onclick="filterByCategory('Household Care')">
+                        <div class="banner-img-slide">
+                            <img src="images/banner3.png" alt="WOW & NOW Deals">
                         </div>
                     </div>
                 </div>
@@ -515,7 +492,7 @@
                 Continue Shopping <i class="fa-solid fa-bag-shopping"></i>
             </button>
         </div>
-    </div>
+    </aside>
 
     <!-- Toast Notification Container -->
     <div class="toast-container" id="toastContainer"></div>

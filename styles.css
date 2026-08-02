@@ -1,11 +1,11 @@
 /* ==========================================================================
    ARKMart Design System & Header Style Manifest
-   Exact Match to Target Mobile Header UI
+   Exact Match to Target Mobile Header UI & Banner Slider
    ========================================================================== */
 
 :root {
     /* Brand Theme Colors */
-    --header-bg: #0088cc;        /* Ocean Blue (Exact match to target image) */
+    --header-bg: #0088cc;        /* Ocean Blue */
     --primary: #0F172A;
     --accent: #10B981;           /* Fresh Green Accent */
     --accent-hover: #059669;
@@ -101,7 +101,7 @@ body {
     padding: 2px;
 }
 
-/* Target Logo Styling (Matching Image Typography) */
+/* Target Logo Styling */
 .brand-logo {
     display: flex;
     align-items: center;
@@ -154,9 +154,7 @@ body {
     gap: 6px;
     cursor: pointer;
 }
-.location-badge i {
-    font-size: 0.85rem;
-}
+.location-badge i { font-size: 0.85rem; }
 
 .header-cart-icon-btn {
     background: none;
@@ -188,7 +186,7 @@ body {
     border: 2px solid var(--header-bg);
 }
 
-/* Search Bar (Pill Shape Matching Image) */
+/* Search Bar (Pill Shape) */
 .header-search-row {
     position: relative;
     width: 100%;
@@ -250,9 +248,7 @@ body {
     overflow-y: auto;
     display: none;
 }
-.search-suggestions.active {
-    display: block;
-}
+.search-suggestions.active { display: block; }
 
 .suggestion-item {
     padding: 10px 16px;
@@ -269,7 +265,7 @@ body {
     color: #0088cc;
 }
 
-/* Side Drawer (Hamburger Menu Popup) */
+/* Side Drawer (Hamburger Menu) */
 .side-drawer-overlay {
     position: fixed;
     top: 0;
@@ -283,10 +279,7 @@ body {
     visibility: hidden;
     transition: var(--transition);
 }
-.side-drawer-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
+.side-drawer-overlay.active { opacity: 1; visibility: visible; }
 
 .side-drawer {
     position: fixed;
@@ -303,9 +296,7 @@ body {
     transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.side-drawer.active {
-    transform: translateX(0);
-}
+.side-drawer.active { transform: translateX(0); }
 
 .drawer-header {
     background-color: var(--header-bg);
@@ -316,11 +307,7 @@ body {
     justify-content: space-between;
 }
 
-.drawer-user-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+.drawer-user-info { display: flex; align-items: center; gap: 12px; }
 .user-avatar {
     width: 40px;
     height: 40px;
@@ -344,15 +331,8 @@ body {
     cursor: pointer;
 }
 
-.drawer-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px;
-}
-
-.drawer-menu-group {
-    margin-bottom: 20px;
-}
+.drawer-body { flex: 1; overflow-y: auto; padding: 16px; }
+.drawer-menu-group { margin-bottom: 20px; }
 .menu-group-title {
     font-size: 0.7rem;
     font-weight: 800;
@@ -385,7 +365,7 @@ body {
     padding: 16px;
 }
 
-/* Hero Carousel */
+/* Hero Carousel (Exact Banner Slider for User Images) */
 .hero-carousel-section {
     margin-bottom: 20px;
 }
@@ -402,68 +382,59 @@ body {
 .carousel-slide {
     min-width: 100%;
 }
-.banner-card {
-    padding: 24px 30px;
+
+.banner-img-slide {
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    min-height: 200px;
-    color: var(--text-inverse);
-    position: relative;
-    overflow: hidden;
+    justify-content: center;
+    background-color: #0088cc;
 }
 
-.banner-primary {
-    background: linear-gradient(135deg, #0088cc 0%, #005580 100%);
-}
-.banner-secondary {
-    background: linear-gradient(135deg, #065F46 0%, #10B981 100%);
-}
-.banner-tertiary {
-    background: linear-gradient(135deg, #C2410C 0%, #EA580C 100%);
-}
-
-.banner-content { max-width: 60%; }
-.banner-badge {
-    background-color: var(--warning);
-    color: black;
-    font-size: 0.7rem;
-    font-weight: 800;
-    padding: 3px 10px;
-    border-radius: var(--border-radius-pill);
-    display: inline-block;
-    margin-bottom: 8px;
-}
-.banner-content h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
-.banner-content p { font-size: 0.88rem; opacity: 0.9; margin-bottom: 14px; }
-.banner-cta {
-    background-color: white;
-    color: #0088cc;
-    font-weight: 800;
-    padding: 8px 18px;
-    border-radius: var(--border-radius-pill);
-    font-size: 0.85rem;
-    border: none;
-}
-
-.banner-visual img {
-    width: 180px;
-    height: 130px;
+.banner-img-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 260px;
     object-fit: cover;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-md);
+    display: block;
+    border-radius: var(--border-radius-md);
 }
 
-.floating-deal-tag {
+.banner-overlay-container {
+    position: relative;
+}
+
+/* Brand Patch Overlay for Banner 2 to show ARKMart */
+.brand-patch-overlay {
     position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: var(--danger);
-    color: white;
-    font-size: 0.68rem;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: var(--border-radius-pill);
+    bottom: 27%;
+    right: 7%;
+    background-color: #FAF4EB;
+    padding: 3px 12px;
+    border-radius: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    z-index: 5;
+    border: 1px solid #F3E4D2;
+}
+
+.patch-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #0F172A;
+    font-family: var(--font-heading);
+}
+
+.patch-brand {
+    color: #0088cc;
+    font-size: 1.05rem;
+    font-weight: 900;
+}
+.patch-sub {
+    color: #0088cc;
 }
 
 .carousel-dots {
@@ -473,12 +444,13 @@ body {
     transform: translateX(-50%);
     display: flex;
     gap: 6px;
+    z-index: 10;
 }
 .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
 }
 .dot.active {
@@ -501,11 +473,7 @@ body {
     gap: 10px;
 }
 
-.flash-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+.flash-title { display: flex; align-items: center; gap: 10px; }
 .flash-icon { font-size: 1.4rem; color: var(--danger); }
 .flash-text h3 { font-size: 0.98rem; }
 .flash-text span { font-size: 0.75rem; color: var(--text-secondary); }
@@ -789,4 +757,12 @@ body {
     
     .nav-cart-icon { position: relative; }
     .nav-cart-badge { position: absolute; top: -5px; right: -8px; background: var(--danger); color: white; font-size: 0.6rem; font-weight: 800; width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+    .brand-patch-overlay {
+        bottom: 23%;
+        right: 4%;
+        padding: 2px 8px;
+    }
+    .patch-text { font-size: 0.72rem; }
+    .patch-brand { font-size: 0.88rem; }
 }
