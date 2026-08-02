@@ -68,7 +68,6 @@
                 <span class="ticker-item"><span class="badge-pill new">NEW</span> 🎁 FLAT 50% OFF ON STAPLES</span>
                 <span class="ticker-item"><span class="badge-pill express">EXPRESS</span> 🚀 10-MIN FREE DELIVERY</span>
             </div>
-            <!-- Duplicate for Seamless Infinite Loop -->
             <div class="marquee-content" aria-hidden="true">
                 <span class="ticker-item"><span class="badge-pill hot">HOT</span> 🔥 BUY 3 GET 1 FREE</span>
                 <span class="ticker-item"><span class="badge-pill deal">DEAL</span> ⚡ BUY 5 GET 2 FREE</span>
@@ -118,30 +117,25 @@
         <section class="hero-carousel-section">
             <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack">
-                    <!-- Banner 1: Low Price Guarantee -->
                     <div class="carousel-slide active" onclick="filterByCategory('Grocery')">
                         <div class="banner-img-slide">
                             <img src="images/banner1.png" alt="Low Price Guarantee on Your Favourite Items">
                         </div>
                     </div>
-                    <!-- Banner 2: Mother's Day Delights with ARKMart Branding -->
                     <div class="carousel-slide" onclick="filterByCategory('Makeup')">
                         <div class="banner-img-slide banner-overlay-container">
                             <img src="images/banner2.png" alt="Mother's Day Delights">
-                            <!-- Overlay patch over JioMart text to show ARKMart -->
                             <div class="brand-patch-overlay">
                                 <span class="patch-text">Find them all on <strong class="patch-brand">ARK<span class="patch-sub">Mart</span></strong></span>
                             </div>
                         </div>
                     </div>
-                    <!-- Banner 3: Wow & Now Deals -->
                     <div class="carousel-slide" onclick="filterByCategory('Grocery')">
                         <div class="banner-img-slide">
                             <img src="images/banner3.png" alt="WOW & NOW Deals">
                         </div>
                     </div>
                 </div>
-                <!-- Carousel Controls -->
                 <div class="carousel-dots" id="carouselDots">
                     <span class="dot active" onclick="goToSlide(0)"></span>
                     <span class="dot" onclick="goToSlide(1)"></span>
@@ -150,7 +144,7 @@
             </div>
         </section>
 
-        <!-- Maha Flash Sale Countdown & Icon Category Cards (Matching User's Target Image) -->
+        <!-- Maha Flash Sale Countdown & Icon Category Cards -->
         <section class="maha-flash-section">
             <div class="flash-sale-card">
                 <div class="flash-sale-header">
@@ -167,33 +161,25 @@
                     </div>
                 </div>
 
-                <!-- Custom Visual Category Cards (Grocery, Kitchen, Electronics, Makeup) -->
                 <div class="visual-category-grid">
-                    <!-- Grocery -->
                     <div class="v-cat-card active" onclick="selectVisualCategory('Grocery', this)">
                         <div class="v-cat-icon-box bg-grocery">
                             <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=200&q=80" alt="Grocery">
                         </div>
                         <span class="v-cat-name">Grocery</span>
                     </div>
-
-                    <!-- Kitchen -->
                     <div class="v-cat-card" onclick="selectVisualCategory('Kitchen', this)">
                         <div class="v-cat-icon-box bg-kitchen">
                             <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=200&q=80" alt="Kitchen">
                         </div>
                         <span class="v-cat-name">Kitchen</span>
                     </div>
-
-                    <!-- Electronics -->
                     <div class="v-cat-card" onclick="selectVisualCategory('Electronics', this)">
                         <div class="v-cat-icon-box bg-electronics">
                             <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=200&q=80" alt="Electronics">
                         </div>
                         <span class="v-cat-name">Electronics</span>
                     </div>
-
-                    <!-- Makeup -->
                     <div class="v-cat-card" onclick="selectVisualCategory('Makeup', this)">
                         <div class="v-cat-icon-box bg-makeup">
                             <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=200&q=80" alt="Makeup">
@@ -239,6 +225,94 @@
             </div>
         </section>
     </main>
+
+    <!-- Professional Product Details Page / Modal (Matching User's Target Screenshot) -->
+    <div class="product-details-overlay" id="productDetailsOverlay">
+        <div class="product-details-modal" id="productDetailsModal">
+            <!-- Modal Header Bar -->
+            <div class="p-details-header">
+                <button class="p-details-back-btn" onclick="closeProductDetails()">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h3 class="p-details-title">Product Details</h3>
+                <button class="p-details-cart-btn" onclick="closeProductDetails(); openCartDrawer();">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="p-details-cart-badge" id="detailsCartBadge">0</span>
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-details-body">
+                <!-- Main Image Preview Card -->
+                <div class="p-details-image-box">
+                    <img id="pDetailsMainImg" src="" alt="Product Image">
+                    <div class="veg-symbol-badge" title="100% Vegetarian">
+                        <span class="veg-dot"></span>
+                    </div>
+                </div>
+
+                <!-- Thumbnails Gallery Strip -->
+                <div class="p-thumbnails-wrapper">
+                    <button class="thumb-arrow left" onclick="scrollThumbnails(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="thumbnails-track" id="pThumbnailsTrack">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button class="thumb-arrow right" onclick="scrollThumbnails(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+
+                <!-- Info Box -->
+                <div class="p-details-info-card">
+                    <h2 class="p-details-name" id="pDetailsName">Product Name</h2>
+                    
+                    <div class="p-details-meta-row">
+                        <span class="p-details-weight-pill" id="pDetailsWeight">5 kg</span>
+                        <div class="p-details-rating-badge" id="pDetailsRating">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
+                        </div>
+                        <span class="p-details-stock-status"><i class="fa-solid fa-circle-check"></i> In Stock</span>
+                    </div>
+
+                    <div class="p-details-price-row">
+                        <div class="price-calc-box">
+                            <span class="p-details-current-price" id="pDetailsPrice">₹235</span>
+                            <span class="p-details-mrp-price" id="pDetailsMrp">₹290</span>
+                            <span class="p-details-discount-tag" id="pDetailsDiscount">19% OFF</span>
+                        </div>
+                        <span class="tax-inclusive-tag">(Inclusive of all taxes)</span>
+                    </div>
+
+                    <!-- Green 10-Mins Delivery Info -->
+                    <div class="p-details-delivery-box">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div>
+                            <strong>Superfast 10-Minute Delivery</strong>
+                            <span>Guaranteed Fresh & Free Delivery over ₹199</span>
+                        </div>
+                    </div>
+
+                    <!-- Highlights & Description -->
+                    <div class="p-details-description">
+                        <h4>Product Highlights</h4>
+                        <ul class="highlights-list">
+                            <li><i class="fa-solid fa-check"></i> 100% Pure & Hygienically Processed</li>
+                            <li><i class="fa-solid fa-check"></i> Superior Quality & Trusted Brand Assurance</li>
+                            <li><i class="fa-solid fa-check"></i> Easy Return & Replacement Policy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Dual Action Buttons Bar (Add to Cart & Buy Now) -->
+            <div class="p-details-footer-bar">
+                <button class="btn-p-add-cart" id="pDetailsAddCartBtn">
+                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                </button>
+                <button class="btn-p-buy-now" id="pDetailsBuyNowBtn">
+                    Buy Now
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Floating View Cart Sticky Bar (Mobile Only) -->
     <div class="mobile-cart-bar" id="mobileCartBar" style="display:none;">
@@ -286,7 +360,6 @@
             <button class="close-drawer-btn" onclick="closeCartDrawer()"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
-        <!-- Free Delivery Progress Bar -->
         <div class="free-delivery-bar" id="freeDeliveryBar">
             <div class="free-delivery-text" id="freeDeliveryText">Add ₹199 more for <strong>FREE Delivery</strong></div>
             <div class="progress-track">
@@ -294,14 +367,11 @@
             </div>
         </div>
 
-        <!-- Cart Items List Container -->
         <div class="cart-drawer-body" id="cartDrawerBody">
             <!-- Rendered by JS -->
         </div>
 
-        <!-- Cart Footer & Checkout Action -->
         <div class="cart-drawer-footer" id="cartDrawerFooter">
-            <!-- Coupon Code Accordion -->
             <div class="coupon-section">
                 <div class="coupon-input-group">
                     <i class="fa-solid fa-ticket coupon-icon"></i>
@@ -311,7 +381,6 @@
                 <div class="applied-coupon-msg" id="couponMsg"></div>
             </div>
 
-            <!-- Bill Details Breakdown -->
             <div class="bill-summary">
                 <div class="bill-row">
                     <span>Item Total (MRP)</span>
@@ -360,7 +429,6 @@
             </div>
 
             <div class="checkout-modal-body">
-                <!-- Delivery Address Section -->
                 <div class="checkout-step-box">
                     <div class="step-title">
                         <span class="step-num">1</span>
@@ -381,14 +449,12 @@
                     </form>
                 </div>
 
-                <!-- Payment Method Selector -->
                 <div class="checkout-step-box">
                     <div class="step-title">
                         <span class="step-num">2</span>
                         <h5>Select Payment Method</h5>
                     </div>
 
-                    <!-- Payment Options Tabs -->
                     <div class="payment-tabs">
                         <button class="pay-tab-btn active" data-tab="upi">
                             <i class="fa-solid fa-mobile-screen-button"></i> UPI & Apps
@@ -404,11 +470,9 @@
                         </button>
                     </div>
 
-                    <!-- Payment Tab Contents -->
                     <div class="payment-tab-content active" id="tab-upi">
                         <p class="pay-instruction">Instant payment using any UPI App or QR Code</p>
                         
-                        <!-- Instant UPI App Fast Checkout Buttons -->
                         <div class="upi-apps-grid">
                             <label class="upi-app-card">
                                 <input type="radio" name="upiAppSelect" value="gpay" checked>
@@ -440,7 +504,6 @@
                             </label>
                         </div>
 
-                        <!-- Manual VPA Input -->
                         <div class="vpa-input-wrapper">
                             <label for="upiVpaInput">Or enter UPI ID (e.g. mobile@upi, name@okicici):</label>
                             <div class="vpa-field">
@@ -450,7 +513,6 @@
                             <span class="vpa-status" id="vpaStatus"></span>
                         </div>
 
-                        <!-- Scan QR Option -->
                         <div class="qr-code-box">
                             <div class="qr-placeholder">
                                 <i class="fa-solid fa-qrcode qr-large-icon"></i>
@@ -462,7 +524,6 @@
                         </div>
                     </div>
 
-                    <!-- Debit / Credit Card Form -->
                     <div class="payment-tab-content" id="tab-card">
                         <div class="card-form">
                             <div class="form-group">
@@ -489,7 +550,6 @@
                         </div>
                     </div>
 
-                    <!-- Net Banking -->
                     <div class="payment-tab-content" id="tab-netbanking">
                         <p class="pay-instruction">Choose your Bank for NetBanking transaction:</p>
                         <div class="banks-grid">
@@ -501,7 +561,6 @@
                         </div>
                     </div>
 
-                    <!-- Cash on Delivery -->
                     <div class="payment-tab-content" id="tab-cod">
                         <div class="cod-box">
                             <i class="fa-solid fa-money-bill-wave cod-icon"></i>
@@ -514,7 +573,6 @@
                 </div>
             </div>
 
-            <!-- Modal Footer Action -->
             <div class="checkout-modal-footer">
                 <div class="security-trust-badge">
                     <i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted & 100% Safe Payment

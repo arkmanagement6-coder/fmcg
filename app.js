@@ -1,6 +1,6 @@
 /* ==========================================================================
    ARKMart Application Logic & Interactive Features
-   Visual Categories, Infinite Ticker, Green 10-Min Free Delivery Badges
+   Visual Categories, Infinite Ticker, Product Details Modal (Target Match)
    ========================================================================== */
 
 // --------------------------------------------------------------------------
@@ -15,11 +15,17 @@ const productsData = [
         weight: "5 kg",
         mrp: 290,
         price: 235,
-        rating: 4.8,
+        rating: 4.9,
         reviews: 2430,
         discount: "19% OFF",
         image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=400&q=80",
-        badge: "Bestseller"
+        badge: "Bestseller",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=400&q=80"
+        ]
     },
     {
         id: "p2",
@@ -32,7 +38,11 @@ const productsData = [
         reviews: 1850,
         discount: "25% OFF",
         image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=400&q=80",
-        badge: "Hot Deal"
+        badge: "Hot Deal",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80"
+        ]
     },
     {
         id: "p3",
@@ -45,7 +55,11 @@ const productsData = [
         reviews: 3120,
         discount: "24% OFF",
         image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80",
-        badge: "Top Rated"
+        badge: "Top Rated",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=400&q=80"
+        ]
     },
     {
         id: "p4",
@@ -58,7 +72,10 @@ const productsData = [
         reviews: 5400,
         discount: "14% OFF",
         image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=400&q=80",
-        badge: "Essential"
+        badge: "Essential",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=400&q=80"
+        ]
     },
 
     // --- KITCHEN & COOKWARE ---
@@ -73,7 +90,11 @@ const productsData = [
         reviews: 1250,
         discount: "17% OFF",
         image: "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=400&q=80",
-        badge: "Hot Deal"
+        badge: "Hot Deal",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80"
+        ]
     },
     {
         id: "pk2",
@@ -86,7 +107,10 @@ const productsData = [
         reviews: 890,
         discount: "31% OFF",
         image: "https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80",
-        badge: "Best Value"
+        badge: "Best Value",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80"
+        ]
     },
 
     // --- ELECTRONICS & AUDIO ---
@@ -101,7 +125,11 @@ const productsData = [
         reviews: 8400,
         discount: "56% OFF",
         image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=80",
-        badge: "Mega Saver"
+        badge: "Mega Saver",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1609592424009-59847116b47c?auto=format&fit=crop&w=400&q=80"
+        ]
     },
     {
         id: "pe2",
@@ -114,7 +142,10 @@ const productsData = [
         reviews: 6200,
         discount: "40% OFF",
         image: "https://images.unsplash.com/photo-1609592424009-59847116b47c?auto=format&fit=crop&w=400&q=80",
-        badge: "Top Seller"
+        badge: "Top Seller",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1609592424009-59847116b47c?auto=format&fit=crop&w=400&q=80"
+        ]
     },
 
     // --- MAKEUP & BEAUTY ---
@@ -129,7 +160,11 @@ const productsData = [
         reviews: 3100,
         discount: "30% OFF",
         image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
-        badge: "Must Have"
+        badge: "Must Have",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80"
+        ]
     },
     {
         id: "pm2",
@@ -142,7 +177,10 @@ const productsData = [
         reviews: 1980,
         discount: "27% OFF",
         image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80",
-        badge: "Trending"
+        badge: "Trending",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80"
+        ]
     },
 
     // --- DAIRY & BAKERY ---
@@ -157,7 +195,10 @@ const productsData = [
         reviews: 4200,
         discount: "9% OFF",
         image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=400&q=80",
-        badge: "Daily Must"
+        badge: "Daily Must",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=400&q=80"
+        ]
     },
     {
         id: "p11",
@@ -170,7 +211,10 @@ const productsData = [
         reviews: 6100,
         discount: "7% OFF",
         image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=400&q=80",
-        badge: "Bestseller"
+        badge: "Bestseller",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=400&q=80"
+        ]
     },
 
     // --- SNACKS & DRINKS ---
@@ -185,7 +229,10 @@ const productsData = [
         reviews: 3450,
         discount: "16% OFF",
         image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=400&q=80",
-        badge: "Party Pack"
+        badge: "Party Pack",
+        thumbnails: [
+            "https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=400&q=80"
+        ]
     }
 ];
 
@@ -207,7 +254,8 @@ let state = {
     sortBy: "popular",
     cart: {},
     activeCoupon: null,
-    discountAmount: 0
+    discountAmount: 0,
+    currentDetailProduct: null
 };
 
 // Initializer
@@ -281,7 +329,6 @@ function filterByCategory(categoryName) {
         categoryName === "All" ? "All Products" : categoryName;
 }
 
-// Select Visual Category Cards (Grocery, Kitchen, Electronics, Makeup)
 function selectVisualCategory(categoryName, elem) {
     document.querySelectorAll(".v-cat-card").forEach(c => c.classList.remove("active"));
     if (elem) elem.classList.add("active");
@@ -325,7 +372,7 @@ function renderProducts() {
     grid.innerHTML = filtered.map(p => {
         const qty = state.cart[p.id] || 0;
         return `
-            <div class="product-card">
+            <div class="product-card" onclick="openProductDetails('${p.id}')">
                 <div class="card-badge-wrapper">
                     ${p.discount ? `<span class="badge-discount">${p.discount}</span>` : ''}
                 </div>
@@ -343,12 +390,12 @@ function renderProducts() {
                         <span>${p.rating}</span>
                     </div>
 
-                    <!-- Green 10-Mins Delivery Time & Free Delivery Badge -->
+                    <!-- Green 10-Mins Delivery Badge -->
                     <div class="green-delivery-info">
                         <i class="fa-solid fa-bolt"></i> <span>10 MINS</span> &bull; <i class="fa-solid fa-truck-fast"></i> <span>FREE Delivery</span>
                     </div>
 
-                    <div class="product-bottom-row">
+                    <div class="product-bottom-row" onclick="event.stopPropagation();">
                         <div class="price-box">
                             <span class="current-price">₹${p.price}</span>
                             ${p.mrp > p.price ? `<span class="mrp-price">₹${p.mrp}</span>` : ''}
@@ -356,14 +403,14 @@ function renderProducts() {
                         
                         <div class="add-btn-wrapper">
                             ${qty === 0 ? `
-                                <button class="btn-add-cart" onclick="addToCart('${p.id}')">
+                                <button class="btn-add-cart" onclick="addToCart('${p.id}'); event.stopPropagation();">
                                     ADD <i class="fa-solid fa-plus"></i>
                                 </button>
                             ` : `
                                 <div class="qty-stepper">
-                                    <button class="qty-btn" onclick="updateItemQuantity('${p.id}', ${qty - 1})"><i class="fa-solid fa-minus"></i></button>
+                                    <button class="qty-btn" onclick="updateItemQuantity('${p.id}', ${qty - 1}); event.stopPropagation();"><i class="fa-solid fa-minus"></i></button>
                                     <span>${qty}</span>
-                                    <button class="qty-btn" onclick="updateItemQuantity('${p.id}', ${qty + 1})"><i class="fa-solid fa-plus"></i></button>
+                                    <button class="qty-btn" onclick="updateItemQuantity('${p.id}', ${qty + 1}); event.stopPropagation();"><i class="fa-solid fa-plus"></i></button>
                                 </div>
                             `}
                         </div>
@@ -372,6 +419,65 @@ function renderProducts() {
             </div>
         `;
     }).join("");
+}
+
+// --------------------------------------------------------------------------
+// 2. Open & Populate Professional Product Details Page / Modal
+// --------------------------------------------------------------------------
+function openProductDetails(productId) {
+    const product = productsData.find(p => p.id === productId);
+    if (!product) return;
+
+    state.currentDetailProduct = product;
+
+    // Populate Fields
+    document.getElementById("pDetailsMainImg").src = product.image;
+    document.getElementById("pDetailsName").innerText = product.name;
+    document.getElementById("pDetailsWeight").innerText = product.weight;
+    document.getElementById("pDetailsRating").innerHTML = `<i class="fa-solid fa-star"></i> <span>${product.rating}</span>`;
+    document.getElementById("pDetailsPrice").innerText = `₹${product.price}`;
+    document.getElementById("pDetailsMrp").innerText = `₹${product.mrp}`;
+    document.getElementById("pDetailsDiscount").innerText = product.discount || "SALE";
+
+    // Populate Thumbnails Gallery Track
+    const track = document.getElementById("pThumbnailsTrack");
+    const thumbs = product.thumbnails || [product.image, product.image];
+    track.innerHTML = thumbs.map((imgUrl, idx) => `
+        <img src="${imgUrl}" class="thumb-img ${idx === 0 ? 'active' : ''}" onclick="switchDetailImage('${imgUrl}', this)">
+    `).join("");
+
+    // Setup Footer Button Handlers
+    const addCartBtn = document.getElementById("pDetailsAddCartBtn");
+    addCartBtn.onclick = () => {
+        addToCart(product.id);
+        closeProductDetails();
+        openCartDrawer();
+    };
+
+    const buyNowBtn = document.getElementById("pDetailsBuyNowBtn");
+    buyNowBtn.onclick = () => {
+        addToCart(product.id);
+        closeProductDetails();
+        document.getElementById("checkoutModalOverlay").classList.add("active");
+    };
+
+    // Open Modal
+    document.getElementById("productDetailsOverlay").classList.add("active");
+}
+
+function closeProductDetails() {
+    document.getElementById("productDetailsOverlay").classList.remove("active");
+}
+
+function switchDetailImage(imgUrl, elem) {
+    document.getElementById("pDetailsMainImg").src = imgUrl;
+    document.querySelectorAll(".thumb-img").forEach(t => t.classList.remove("active"));
+    if (elem) elem.classList.add("active");
+}
+
+function scrollThumbnails(direction) {
+    const track = document.getElementById("pThumbnailsTrack");
+    if (track) track.scrollBy({ left: direction * 120, behavior: 'smooth' });
 }
 
 function addToCart(productId) {
@@ -413,6 +519,7 @@ function updateCartUI() {
 
     document.getElementById("cartCountBadge").innerText = totalItems;
     document.getElementById("navCartBadge").innerText = totalItems;
+    document.getElementById("detailsCartBadge").innerText = totalItems;
     document.getElementById("mobileCartItemCount").innerText = totalItems;
     document.getElementById("mobileCartPrice").innerText = `₹${finalPayable}`;
 
@@ -646,7 +753,6 @@ function startFlashTimer() {
     }, 1000);
 }
 
-// Maha Flash Countdown Timer (e.g. 09:36)
 function startMahaTimer() {
     let seconds = 9 * 60 + 36;
     const elem = document.getElementById("mahaTimer");
