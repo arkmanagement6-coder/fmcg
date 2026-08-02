@@ -1,16 +1,17 @@
 /* ==========================================================================
    ARKMart Application Logic & Interactive Features
+   Visual Categories, Infinite Ticker & Live Flash Countdown
    ========================================================================== */
 
 // --------------------------------------------------------------------------
-// 1. FMCG Product Dataset (Custom Brand ARKMart)
+// 1. FMCG Product Dataset (Grocery, Kitchen, Electronics, Makeup)
 // --------------------------------------------------------------------------
 const productsData = [
-    // --- STAPLES ---
+    // --- GROCERY & STAPLES ---
     {
         id: "p1",
         name: "Aashirvaad Shudh Chakki Atta",
-        category: "Staples",
+        category: "Grocery",
         weight: "5 kg",
         mrp: 290,
         price: 235,
@@ -23,7 +24,7 @@ const productsData = [
     {
         id: "p2",
         name: "Fortune Sunlite Refined Sunflower Oil",
-        category: "Staples",
+        category: "Grocery",
         weight: "1 L Pouch",
         mrp: 185,
         price: 139,
@@ -36,7 +37,7 @@ const productsData = [
     {
         id: "p3",
         name: "Daawat Rozana Super Basmati Rice",
-        category: "Staples",
+        category: "Grocery",
         weight: "5 kg",
         mrp: 499,
         price: 375,
@@ -49,7 +50,7 @@ const productsData = [
     {
         id: "p4",
         name: "Tata Salt Vacuum Evaporated Iodised Salt",
-        category: "Staples",
+        category: "Grocery",
         weight: "1 kg",
         mrp: 28,
         price: 24,
@@ -59,59 +60,89 @@ const productsData = [
         image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=400&q=80",
         badge: "Essential"
     },
+
+    // --- KITCHEN & COOKWARE ---
     {
-        id: "p5",
-        name: "Madhur Pure & Hygienic Sugar",
-        category: "Staples",
-        weight: "1 kg",
-        mrp: 65,
-        price: 49,
-        rating: 4.6,
-        reviews: 980,
-        discount: "24% OFF",
-        image: "https://images.unsplash.com/photo-1581600140682-d4e68c8cde32?auto=format&fit=crop&w=400&q=80",
-        badge: null
+        id: "pk1",
+        name: "Hawkins Contura Aluminium Pressure Cooker",
+        category: "Kitchen",
+        weight: "3 Litre",
+        mrp: 1450,
+        price: 1199,
+        rating: 4.8,
+        reviews: 1250,
+        discount: "17% OFF",
+        image: "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=400&q=80",
+        badge: "Hot Deal"
+    },
+    {
+        id: "pk2",
+        name: "Prestige Non-Stick Dosa Tawa & Pan Combo",
+        category: "Kitchen",
+        weight: "Pack of 2 Pcs",
+        mrp: 1899,
+        price: 1299,
+        rating: 4.7,
+        reviews: 890,
+        discount: "31% OFF",
+        image: "https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80",
+        badge: "Best Value"
     },
 
-    // --- FRESH PRODUCE ---
+    // --- ELECTRONICS & AUDIO ---
     {
-        id: "p6",
-        name: "Fresh Hybrid Red Tomatoes",
-        category: "Fresh Produce",
-        weight: "1 kg",
-        mrp: 40,
-        price: 26,
-        rating: 4.5,
-        reviews: 890,
-        discount: "35% OFF",
-        image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=400&q=80",
-        badge: "Farm Fresh"
+        id: "pe1",
+        name: "boAt Airdopes True Wireless Bluetooth Earbuds",
+        category: "Electronics",
+        weight: "1 Unit (Active Noise Cancelling)",
+        mrp: 2990,
+        price: 1299,
+        rating: 4.8,
+        reviews: 8400,
+        discount: "56% OFF",
+        image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=80",
+        badge: "Mega Saver"
     },
     {
-        id: "p7",
-        name: "Organic Farm Fresh Potatoes (Aloo)",
-        category: "Fresh Produce",
-        weight: "1 kg",
-        mrp: 35,
-        price: 22,
-        rating: 4.6,
-        reviews: 1420,
-        discount: "37% OFF",
-        image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=400&q=80",
-        badge: "Direct Farm"
+        id: "pe2",
+        name: "Mi 10000mAh Fast Charging Power Bank 3i",
+        category: "Electronics",
+        weight: "18W Fast Charge",
+        mrp: 1999,
+        price: 1199,
+        rating: 4.9,
+        reviews: 6200,
+        discount: "40% OFF",
+        image: "https://images.unsplash.com/photo-1609592424009-59847116b47c?auto=format&fit=crop&w=400&q=80",
+        badge: "Top Seller"
+    },
+
+    // --- MAKEUP & BEAUTY ---
+    {
+        id: "pm1",
+        name: "Lakme Forever Matte Liquid Lipstick",
+        category: "Makeup",
+        weight: "5.6 ml (Crimson Rose)",
+        mrp: 350,
+        price: 245,
+        rating: 4.8,
+        reviews: 3100,
+        discount: "30% OFF",
+        image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
+        badge: "Must Have"
     },
     {
-        id: "p8",
-        name: "Robusta Fresh Yellow Bananas",
-        category: "Fresh Produce",
-        weight: "1 Dozen (12 Pcs)",
-        mrp: 70,
-        price: 48,
+        id: "pm2",
+        name: "Pond's Serum Boost Sunscreen SPF 55",
+        category: "Makeup",
+        weight: "100 g Tube",
+        mrp: 449,
+        price: 325,
         rating: 4.7,
-        reviews: 1650,
-        discount: "31% OFF",
-        image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=400&q=80",
-        badge: "High Fiber"
+        reviews: 1980,
+        discount: "27% OFF",
+        image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80",
+        badge: "Trending"
     },
 
     // --- DAIRY & BAKERY ---
@@ -141,19 +172,6 @@ const productsData = [
         image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=400&q=80",
         badge: "Bestseller"
     },
-    {
-        id: "p12",
-        name: "Britannia 100% Whole Wheat Bread",
-        category: "Dairy & Bakery",
-        weight: "400 g",
-        mrp: 45,
-        price: 40,
-        rating: 4.6,
-        reviews: 1120,
-        discount: "11% OFF",
-        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80",
-        badge: "Zero Maida"
-    },
 
     // --- SNACKS & DRINKS ---
     {
@@ -168,61 +186,18 @@ const productsData = [
         discount: "16% OFF",
         image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=400&q=80",
         badge: "Party Pack"
-    },
-    {
-        id: "p15",
-        name: "Coca-Cola Original Taste Soft Drink",
-        category: "Snacks & Drinks",
-        weight: "750 ml Bottle",
-        mrp: 45,
-        price: 38,
-        rating: 4.7,
-        reviews: 2100,
-        discount: "15% OFF",
-        image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=400&q=80",
-        badge: "Chilled"
-    },
-
-    // --- PERSONAL CARE ---
-    {
-        id: "p18",
-        name: "Dove Cream Beauty Bathing Soap Bar",
-        category: "Personal Care",
-        weight: "Pack of 4 (125g each)",
-        mrp: 299,
-        price: 239,
-        rating: 4.8,
-        reviews: 1950,
-        discount: "20% OFF",
-        image: "https://images.unsplash.com/photo-1607006482602-76ca75501869?auto=format&fit=crop&w=400&q=80",
-        badge: "Value Pack"
-    },
-
-    // --- HOUSEHOLD CARE ---
-    {
-        id: "p20",
-        name: "Surf Excel Easy Wash Detergent Powder",
-        category: "Household Care",
-        weight: "3 kg Pack",
-        mrp: 480,
-        price: 395,
-        rating: 4.9,
-        reviews: 3890,
-        discount: "18% OFF",
-        image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80",
-        badge: "Tough Stain Removal"
     }
 ];
 
 // Categories Config
 const categories = [
     { name: "All", icon: "fa-solid fa-layer-group" },
-    { name: "Staples", icon: "fa-solid fa-wheat-awn" },
-    { name: "Fresh Produce", icon: "fa-solid fa-apple-whole" },
+    { name: "Grocery", icon: "fa-solid fa-wheat-awn" },
+    { name: "Kitchen", icon: "fa-solid fa-kitchen-set" },
+    { name: "Electronics", icon: "fa-solid fa-mobile-screen-button" },
+    { name: "Makeup", icon: "fa-solid fa-wand-magic-sparkles" },
     { name: "Dairy & Bakery", icon: "fa-solid fa-cheese" },
-    { name: "Snacks & Drinks", icon: "fa-solid fa-cookie-bite" },
-    { name: "Personal Care", icon: "fa-solid fa-pump-soap" },
-    { name: "Household Care", icon: "fa-solid fa-sparkles" }
+    { name: "Snacks & Drinks", icon: "fa-solid fa-cookie-bite" }
 ];
 
 // State
@@ -242,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
     updateCartUI();
     startFlashTimer();
+    startMahaTimer();
     initCarousel();
     initSearch();
     initPaymentTabs();
@@ -285,6 +261,7 @@ function closeSideDrawer() {
 
 function renderCategories() {
     const container = document.getElementById("categoryTabs");
+    if (!container) return;
     container.innerHTML = categories.map(cat => `
         <button class="category-chip ${state.selectedCategory === cat.name ? 'active' : ''}" 
                 onclick="filterByCategory('${cat.name}')">
@@ -302,6 +279,14 @@ function filterByCategory(categoryName) {
     renderProducts();
     document.getElementById("currentCategoryTitle").innerText = 
         categoryName === "All" ? "All Products" : categoryName;
+}
+
+// Select Visual Category Cards (Grocery, Kitchen, Electronics, Makeup)
+function selectVisualCategory(categoryName, elem) {
+    document.querySelectorAll(".v-cat-card").forEach(c => c.classList.remove("active"));
+    if (elem) elem.classList.add("active");
+    filterByCategory(categoryName);
+    document.querySelector(".products-section").scrollIntoView({ behavior: 'smooth' });
 }
 
 function resetToAllProducts(e) {
@@ -652,6 +637,19 @@ function startFlashTimer() {
         const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
         const secs = String(totalSeconds % 60).padStart(2, '0');
         if (timerElem) timerElem.innerText = `${hrs}:${mins}:${secs}`;
+    }, 1000);
+}
+
+// Maha Flash Countdown Timer (e.g. 09:36)
+function startMahaTimer() {
+    let seconds = 9 * 60 + 36;
+    const elem = document.getElementById("mahaTimer");
+    setInterval(() => {
+        if (seconds <= 0) seconds = 9 * 60 + 36;
+        seconds--;
+        const mm = String(Math.floor(seconds / 60)).padStart(2, '0');
+        const ss = String(seconds % 60).padStart(2, '0');
+        if (elem) elem.innerText = `${mm}:${ss}`;
     }, 1000);
 }
 

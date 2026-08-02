@@ -59,7 +59,26 @@
         </div>
     </header>
 
-    <!-- Side Navigation Drawer (Triggered by Hamburger Menu) -->
+    <!-- Continuous Running Marquee Offer Ticker ("Chalta Rahe") -->
+    <div class="infinite-marquee-wrapper">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span class="ticker-item"><span class="badge-pill hot">HOT</span> 🔥 BUY 3 GET 1 FREE</span>
+                <span class="ticker-item"><span class="badge-pill deal">DEAL</span> ⚡ BUY 5 GET 2 FREE</span>
+                <span class="ticker-item"><span class="badge-pill new">NEW</span> 🎁 FLAT 50% OFF ON STAPLES</span>
+                <span class="ticker-item"><span class="badge-pill express">EXPRESS</span> 🚀 10-MIN FREE DELIVERY</span>
+            </div>
+            <!-- Duplicate for Seamless Infinite Loop -->
+            <div class="marquee-content" aria-hidden="true">
+                <span class="ticker-item"><span class="badge-pill hot">HOT</span> 🔥 BUY 3 GET 1 FREE</span>
+                <span class="ticker-item"><span class="badge-pill deal">DEAL</span> ⚡ BUY 5 GET 2 FREE</span>
+                <span class="ticker-item"><span class="badge-pill new">NEW</span> 🎁 FLAT 50% OFF ON STAPLES</span>
+                <span class="ticker-item"><span class="badge-pill express">EXPRESS</span> 🚀 10-MIN FREE DELIVERY</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Side Navigation Drawer -->
     <div class="side-drawer-overlay" id="sideDrawerOverlay" onclick="closeSideDrawer()"></div>
     <aside class="side-drawer" id="sideDrawer">
         <div class="drawer-header">
@@ -76,12 +95,12 @@
         <div class="drawer-body">
             <div class="drawer-menu-group">
                 <div class="menu-group-title">SHOP BY CATEGORY</div>
-                <a href="#" class="drawer-link" onclick="filterByCategory('Staples'); closeSideDrawer();"><i class="fa-solid fa-wheat-awn"></i> Staples & Grocery</a>
-                <a href="#" class="drawer-link" onclick="filterByCategory('Fresh Produce'); closeSideDrawer();"><i class="fa-solid fa-apple-whole"></i> Fresh Produce</a>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Grocery'); closeSideDrawer();"><i class="fa-solid fa-basket-shopping"></i> Grocery & Staples</a>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Kitchen'); closeSideDrawer();"><i class="fa-solid fa-kitchen-set"></i> Kitchen & Cookware</a>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Electronics'); closeSideDrawer();"><i class="fa-solid fa-mobile-screen-button"></i> Electronics & Audio</a>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Makeup'); closeSideDrawer();"><i class="fa-solid fa-wand-magic-sparkles"></i> Beauty & Makeup</a>
                 <a href="#" class="drawer-link" onclick="filterByCategory('Dairy & Bakery'); closeSideDrawer();"><i class="fa-solid fa-cheese"></i> Dairy & Bakery</a>
                 <a href="#" class="drawer-link" onclick="filterByCategory('Snacks & Drinks'); closeSideDrawer();"><i class="fa-solid fa-cookie-bite"></i> Snacks & Beverages</a>
-                <a href="#" class="drawer-link" onclick="filterByCategory('Personal Care'); closeSideDrawer();"><i class="fa-solid fa-pump-soap"></i> Personal Care</a>
-                <a href="#" class="drawer-link" onclick="filterByCategory('Household Care'); closeSideDrawer();"><i class="fa-solid fa-sparkles"></i> Household Care</a>
             </div>
 
             <div class="drawer-menu-group">
@@ -95,18 +114,18 @@
 
     <!-- App Container -->
     <main class="app-main">
-        <!-- Hero Banner Carousel with User's Target Banners -->
+        <!-- Hero Banner Carousel -->
         <section class="hero-carousel-section">
             <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack">
                     <!-- Banner 1: Low Price Guarantee -->
-                    <div class="carousel-slide active" onclick="filterByCategory('Staples')">
+                    <div class="carousel-slide active" onclick="filterByCategory('Grocery')">
                         <div class="banner-img-slide">
                             <img src="images/banner1.png" alt="Low Price Guarantee on Your Favourite Items">
                         </div>
                     </div>
                     <!-- Banner 2: Mother's Day Delights with ARKMart Branding -->
-                    <div class="carousel-slide" onclick="filterByCategory('Personal Care')">
+                    <div class="carousel-slide" onclick="filterByCategory('Makeup')">
                         <div class="banner-img-slide banner-overlay-container">
                             <img src="images/banner2.png" alt="Mother's Day Delights">
                             <!-- Overlay patch over JioMart text to show ARKMart -->
@@ -116,7 +135,7 @@
                         </div>
                     </div>
                     <!-- Banner 3: Wow & Now Deals -->
-                    <div class="carousel-slide" onclick="filterByCategory('Household Care')">
+                    <div class="carousel-slide" onclick="filterByCategory('Grocery')">
                         <div class="banner-img-slide">
                             <img src="images/banner3.png" alt="WOW & NOW Deals">
                         </div>
@@ -131,27 +150,65 @@
             </div>
         </section>
 
-        <!-- Flash Deal Countdown & Highlights Bar -->
-        <section class="flash-deals-bar">
-            <div class="flash-title">
-                <i class="fa-solid fa-fire flash-icon"></i>
-                <div class="flash-text">
-                    <h3>ARKMart Crazy Deals</h3>
-                    <span>Ends in <strong id="flashTimer">02:45:12</strong></span>
+        <!-- Maha Flash Sale Countdown & Icon Category Cards (Matching User's Target Image) -->
+        <section class="maha-flash-section">
+            <div class="flash-sale-card">
+                <div class="flash-sale-header">
+                    <div class="flash-sale-title">
+                        <div class="flash-bolt-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <div>
+                            <h3>Maha Flash Sale</h3>
+                            <span class="ending-soon-tag">ENDING SOON!</span>
+                        </div>
+                    </div>
+                    <div class="live-countdown-badge">
+                        <i class="fa-regular fa-clock"></i>
+                        <span id="mahaTimer">09:36</span>
+                    </div>
                 </div>
-            </div>
-            <div class="trust-pills">
-                <span class="pill"><i class="fa-solid fa-shield-halved"></i> 100% Genuine</span>
-                <span class="pill"><i class="fa-solid fa-truck-fast"></i> Free Delivery > ₹199</span>
-                <span class="pill"><i class="fa-solid fa-rotate-left"></i> Easy Returns</span>
+
+                <!-- Custom Visual Category Cards (Grocery, Kitchen, Electronics, Makeup) -->
+                <div class="visual-category-grid">
+                    <!-- Grocery -->
+                    <div class="v-cat-card active" onclick="selectVisualCategory('Grocery', this)">
+                        <div class="v-cat-icon-box bg-grocery">
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=200&q=80" alt="Grocery">
+                        </div>
+                        <span class="v-cat-name">Grocery</span>
+                    </div>
+
+                    <!-- Kitchen -->
+                    <div class="v-cat-card" onclick="selectVisualCategory('Kitchen', this)">
+                        <div class="v-cat-icon-box bg-kitchen">
+                            <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=200&q=80" alt="Kitchen">
+                        </div>
+                        <span class="v-cat-name">Kitchen</span>
+                    </div>
+
+                    <!-- Electronics -->
+                    <div class="v-cat-card" onclick="selectVisualCategory('Electronics', this)">
+                        <div class="v-cat-icon-box bg-electronics">
+                            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=200&q=80" alt="Electronics">
+                        </div>
+                        <span class="v-cat-name">Electronics</span>
+                    </div>
+
+                    <!-- Makeup -->
+                    <div class="v-cat-card" onclick="selectVisualCategory('Makeup', this)">
+                        <div class="v-cat-icon-box bg-makeup">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=200&q=80" alt="Makeup">
+                        </div>
+                        <span class="v-cat-name">Makeup</span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Categories Scroll Horizontal Bar -->
         <section class="categories-section">
             <div class="section-header">
-                <h3 class="section-title">Shop By Category</h3>
-                <span class="category-count" id="categoryCount">8 Categories</span>
+                <h3 class="section-title">Explore All Categories</h3>
+                <span class="category-count" id="categoryCount">7 Categories</span>
             </div>
             <div class="category-scroll-wrapper" id="categoryTabs">
                 <!-- Injected via JS -->
