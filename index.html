@@ -3,76 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ARK Supermart - Daily Fresh & FMCG Essentials</title>
-    <meta name="description" content="Shop daily groceries, fresh produce, household staples, and personal care items at ARK Supermart. Superfast 10-minute delivery.">
+    <title>ARKMart - India's Online Store</title>
+    <meta name="description" content="Shop daily groceries, fresh produce, household staples, and personal care items at ARKMart. India's trusted online store with superfast delivery.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Top Announcement Bar -->
-    <div class="announcement-bar">
-        <div class="announcement-content">
-            <span>⚡ <strong>ARK EXPRESS:</strong> Superfast 10-Min Delivery in your area | Use Code <strong>ARK50</strong> for ₹50 OFF</span>
-        </div>
-    </div>
-
-    <!-- Header Section -->
+    <!-- Top Header Bar (Matching Target Design) -->
     <header class="main-header">
-        <div class="header-container">
-            <!-- Brand & Location -->
-            <div class="brand-location-wrapper">
-                <a href="#" class="brand-logo">
-                    <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <div class="logo-text">
-                        <span class="brand-name">ARK</span>
-                        <span class="brand-tag">SUPERMART</span>
+        <div class="header-inner">
+            <!-- Top Row: Hamburger Menu, Logo, Cart Icon -->
+            <div class="header-top-row">
+                <div class="header-left-group">
+                    <button class="hamburger-menu-btn" id="hamburgerBtn" aria-label="Open Navigation Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <a href="#" class="brand-logo" onclick="resetToAllProducts(event)">
+                        <div class="brand-text-container">
+                            <span class="brand-name-bold">ARK<span class="brand-name-sub">Mart</span></span>
+                            <span class="brand-tagline">India's Online Store</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="header-right-group">
+                    <div class="location-badge" id="locationPicker">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Deliver to <strong>201301</strong></span>
                     </div>
-                </a>
-                <div class="location-picker" id="locationPicker">
-                    <div class="location-icon"><i class="fa-solid fa-location-dot"></i></div>
-                    <div class="location-info">
-                        <span class="delivery-time"><i class="fa-solid fa-stopwatch"></i> 10 MINS</span>
-                        <span class="location-address" id="currentAddress">Deliver to: Home - Sec 62... <i class="fa-solid fa-chevron-down"></i></span>
-                    </div>
+                    <button class="header-cart-icon-btn" id="headerCartBtn" aria-label="Shopping Cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count-badge" id="cartCountBadge">0</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Search Bar -->
-            <div class="search-container">
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <!-- Bottom Row: Pill-Shaped Search Bar with Mic -->
+            <div class="header-search-row">
+                <div class="search-box-pill">
+                    <i class="fa-solid fa-magnifying-glass search-leading-icon"></i>
                     <input type="text" id="searchInput" placeholder="Search for 'Rice', 'Milk', 'Oil', 'Atta'..." autocomplete="off">
-                    <button class="clear-search-btn" id="clearSearchBtn" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="voice-search-btn" id="voiceSearchBtn" title="Voice Search">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
                 </div>
                 <!-- Search Suggestions Dropdown -->
                 <div class="search-suggestions" id="searchSuggestions"></div>
             </div>
-
-            <!-- Header Actions (Desktop & Tablet) -->
-            <div class="header-actions">
-                <button class="action-btn offer-btn" id="offersTabBtn">
-                    <i class="fa-solid fa-tags"></i>
-                    <span>Deals</span>
-                </button>
-                <button class="action-btn cart-header-btn" id="headerCartBtn">
-                    <div class="cart-icon-wrapper">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="cart-count-badge" id="cartCountBadge">0</span>
-                    </div>
-                    <div class="cart-btn-details">
-                        <span class="cart-label">My Cart</span>
-                        <span class="cart-total-price" id="headerCartTotal">₹0</span>
-                    </div>
-                </button>
-            </div>
         </div>
     </header>
+
+    <!-- Side Navigation Drawer (Triggered by Hamburger Menu) -->
+    <div class="side-drawer-overlay" id="sideDrawerOverlay" onclick="closeSideDrawer()"></div>
+    <aside class="side-drawer" id="sideDrawer">
+        <div class="drawer-header">
+            <div class="drawer-user-info">
+                <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+                <div>
+                    <h4>Hello, Customer</h4>
+                    <span>Welcome to ARKMart</span>
+                </div>
+            </div>
+            <button class="close-side-drawer-btn" onclick="closeSideDrawer()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="drawer-body">
+            <div class="drawer-menu-group">
+                <div class="menu-group-title">SHOP BY CATEGORY</div>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Staples'); closeSideDrawer();"><i class="fa-solid fa-wheat-awn"></i> Staples & Grocery</a>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Fresh Produce'); closeSideDrawer();"><i class="fa-solid fa-apple-whole"></i> Fresh Produce</a>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Dairy & Bakery'); closeSideDrawer();"><i class="fa-solid fa-cheese"></i> Dairy & Bakery</a>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Snacks & Drinks'); closeSideDrawer();"><i class="fa-solid fa-cookie-bite"></i> Snacks & Beverages</a>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Personal Care'); closeSideDrawer();"><i class="fa-solid fa-pump-soap"></i> Personal Care</a>
+                <a href="#" class="drawer-link" onclick="filterByCategory('Household Care'); closeSideDrawer();"><i class="fa-solid fa-sparkles"></i> Household Care</a>
+            </div>
+
+            <div class="drawer-menu-group">
+                <div class="menu-group-title">HELP & SETTINGS</div>
+                <a href="#" class="drawer-link" onclick="showOffers(); closeSideDrawer();"><i class="fa-solid fa-tags"></i> Offers & Coupon Deals</a>
+                <a href="#" class="drawer-link" onclick="openCartDrawer(); closeSideDrawer();"><i class="fa-solid fa-bag-shopping"></i> My Orders & Cart</a>
+                <a href="#" class="drawer-link" onclick="showToast('Customer Care: 1800-123-ARK'); closeSideDrawer();"><i class="fa-solid fa-headset"></i> 24x7 Customer Support</a>
+            </div>
+        </div>
+    </aside>
 
     <!-- App Container -->
     <main class="app-main">
@@ -85,7 +104,7 @@
                         <div class="banner-card banner-primary">
                             <div class="banner-content">
                                 <span class="banner-badge">MEGA SAVINGS</span>
-                                <h2>ARK Daily Staples Festival</h2>
+                                <h2>ARKMart Daily Staples Festival</h2>
                                 <p>Up to <strong>50% OFF</strong> on Fortune Oil, Aashirvaad Atta & Basmati Rice</p>
                                 <button class="banner-cta" onclick="filterByCategory('Staples')">Shop Now <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
@@ -140,7 +159,7 @@
             <div class="flash-title">
                 <i class="fa-solid fa-fire flash-icon"></i>
                 <div class="flash-text">
-                    <h3>ARK Crazy Deals</h3>
+                    <h3>ARKMart Crazy Deals</h3>
                     <span>Ends in <strong id="flashTimer">02:45:12</strong></span>
                 </div>
             </div>
@@ -299,7 +318,7 @@
                 <div class="header-brand-info">
                     <div class="mini-logo"><i class="fa-solid fa-bolt"></i></div>
                     <div>
-                        <h4>ARK Checkout</h4>
+                        <h4>ARKMart Checkout</h4>
                         <span class="checkout-amount-tag">Amount to Pay: <strong id="checkoutPayableAmount">₹0</strong></span>
                     </div>
                 </div>
