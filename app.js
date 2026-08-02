@@ -1,6 +1,6 @@
 /* ==========================================================================
    ARKMart Application Logic & Interactive Features
-   Visual Categories, Infinite Ticker & Live Flash Countdown
+   Visual Categories, Infinite Ticker, Green 10-Min Free Delivery Badges
    ========================================================================== */
 
 // --------------------------------------------------------------------------
@@ -337,9 +337,15 @@ function renderProducts() {
                 <div class="product-info">
                     <span class="product-weight">${p.weight}</span>
                     <h4 class="product-title" title="${p.name}">${p.name}</h4>
+                    
                     <div class="product-rating">
                         <i class="fa-solid fa-star"></i>
                         <span>${p.rating}</span>
+                    </div>
+
+                    <!-- Green 10-Mins Delivery Time & Free Delivery Badge -->
+                    <div class="green-delivery-info">
+                        <i class="fa-solid fa-bolt"></i> <span>10 MINS</span> &bull; <i class="fa-solid fa-truck-fast"></i> <span>FREE Delivery</span>
                     </div>
 
                     <div class="product-bottom-row">
